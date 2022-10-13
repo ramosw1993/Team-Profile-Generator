@@ -26,7 +26,7 @@ const generateTeam = team => {
                         </ul>
                     </div>
                 </div>`;
-                html.push(mHtml);
+        html.push(mHtml);
     };
 
     const engineerTeam = engineer => {
@@ -53,7 +53,7 @@ const generateTeam = team => {
                         </ul>
                     </div>
                 </div>`;
-                html.push(eHtml);
+        html.push(eHtml);
     };
 
     const internTeam = intern => {
@@ -80,21 +80,21 @@ const generateTeam = team => {
                         </ul>
                     </div>
                 </div>`;
-                html.push(iHtml);
-    }; 
+        html.push(iHtml);
+    };
 
     for (let i = 0; i < team.length; i++) {
 
         if (team[i].getRole() === 'Manager') {
             managerTeam(team[i]);
-            
+
         }
         else if (team[i].getRole() === 'Engineer') {
             engineerTeam(team[i]);
         }
         else (team[i].getRole() === 'Intern')
-            internTeam(team[i]);
-        
+        internTeam(team[i]);
+
     }
 
     return html.join('');

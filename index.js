@@ -10,27 +10,27 @@ const teamArray = [];
 
 function addManager() {
   return inquirer.prompt([
-      {
-        type: "input",
-        message: "Enter manager's name",
-        name: "managersName",
-      },
-      {
-        type: "input",
-        message: "Enter manager's ID number",
-        name: "managersId",
-      },
-      {
-        type: "input",
-        message: "Enter manager's email address",
-        name: "managersEmail",
-      },
-      {
-        type: "input",
-        message: "Enter manager's office number",
-        name: "managersOfficeNumber",
-      },
-    ])
+    {
+      type: "input",
+      message: "Enter manager's name",
+      name: "managersName",
+    },
+    {
+      type: "input",
+      message: "Enter manager's ID number",
+      name: "managersId",
+    },
+    {
+      type: "input",
+      message: "Enter manager's email address",
+      name: "managersEmail",
+    },
+    {
+      type: "input",
+      message: "Enter manager's office number",
+      name: "managersOfficeNumber",
+    },
+  ])
     .then((answers) => {
       const manager = new Manager(
         answers.managersName,
@@ -45,27 +45,27 @@ function addManager() {
 
 function addEngineer() {
   return inquirer.prompt([
-      {
-        type: "input",
-        message: "Enter engineer's name",
-        name: "engineersName",
-      },
-      {
-        type: "input",
-        message: "Enter engineer's ID number",
-        name: "engineersId",
-      },
-      {
-        type: "input",
-        message: "Enter engineers's email address",
-        name: "engineersEmail",
-      },
-      {
-        type: "input",
-        message: "Enter engineer's Github ",
-        name: "engineersGithub",
-      },
-    ])
+    {
+      type: "input",
+      message: "Enter engineer's name",
+      name: "engineersName",
+    },
+    {
+      type: "input",
+      message: "Enter engineer's ID number",
+      name: "engineersId",
+    },
+    {
+      type: "input",
+      message: "Enter engineers's email address",
+      name: "engineersEmail",
+    },
+    {
+      type: "input",
+      message: "Enter engineer's Github ",
+      name: "engineersGithub",
+    },
+  ])
     .then((answers) => {
       const engineer = new Engineer(
         answers.engineersName,
@@ -80,27 +80,27 @@ function addEngineer() {
 
 function addIntern() {
   return inquirer.prompt([
-      {
-        type: "input",
-        message: "Enter intern's name",
-        name: "internsName",
-      },
-      {
-        type: "input",
-        message: "Enter interns's ID number",
-        name: "internsId",
-      },
-      {
-        type: "input",
-        message: "Enter intern's email address",
-        name: "internsEmail",
-      },
-      {
-        type: "input",
-        message: "Enter intern's school ",
-        name: "internsSchool",
-      },
-    ])
+    {
+      type: "input",
+      message: "Enter intern's name",
+      name: "internsName",
+    },
+    {
+      type: "input",
+      message: "Enter interns's ID number",
+      name: "internsId",
+    },
+    {
+      type: "input",
+      message: "Enter intern's email address",
+      name: "internsEmail",
+    },
+    {
+      type: "input",
+      message: "Enter intern's school ",
+      name: "internsSchool",
+    },
+  ])
     .then((answers) => {
       const intern = new Intern(
         answers.internsName,
@@ -114,29 +114,29 @@ function addIntern() {
 }
 
 function managerChoice() {
-    inquirer
-      .prompt([
-        {
-          type: "list",
-          message: "Please select your team?",
-          name: "employeeType",
-          choices: ["Engineer", "Intern", "Save Team"],
-        },
-      ])
-      .then((answers) => {
-        switch (answers.employeeType) {
-          case "Engineer":
-            return addEngineer();
-          case "Intern":
-            return addIntern();
-          case "Save Team":
-            return save();
-          default:
-            break;
-        }
-        console.log(answers);
-      });
-  }
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Please select your team?",
+        name: "employeeType",
+        choices: ["Engineer", "Intern", "Save Team"],
+      },
+    ])
+    .then((answers) => {
+      switch (answers.employeeType) {
+        case "Engineer":
+          return addEngineer();
+        case "Intern":
+          return addIntern();
+        case "Save Team":
+          return save();
+        default:
+          break;
+      }
+      console.log(answers);
+    });
+}
 
 function save() {
   const employeeProfile = generateHTML(teamArray);
@@ -145,7 +145,7 @@ function save() {
     if (error) {
       console.log(error);
     } else {
-        console.log("Html file created")
+      console.log("Html file created")
     }
   });
 }
