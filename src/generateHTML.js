@@ -1,99 +1,104 @@
 const generateTeam = team => {
 
+    const html = [];
+
     const managerTeam = manager => {
-        return `
+        let mHtml = `
         <div class="card m-auto shadow-sm p-3 mb-2 bg-body rounded" style="width: 300px">
                     <div class="card-header p-3 mb-2 bg-secondary text-white">
-                        <p class="h3">${manager.getName()}</p>
-                        <p class="h4">${manager.getRole()}</p>
+                        <p class="h3">${manager.managersName}</p>
+                        <p class="h4">Manager</p>
                     </div>
                     <div class="card-body bg-light">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <span class="font-weight-bold">ID: </span>
-                                ${manager.getId()}
+                                ${manager.managersId}
                             </li>
                             <li class="list-group-item">
                                 <span class="font-weight-bold">Email: </span>
-                                <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a>
+                                <a href="mailto:${manager.managersEmail}">${manager.managersEmail}</a>
                             </li>
                             <li class="list-group-item">
                                 <span class="font-weight-bold">Office number: </span>
-                                ${manager.getOfficeNumber()}
+                                ${manager.managersOfficeNumber}
                             </li>
                         </ul>
                     </div>
                 </div>`;
+                html.push(mHtml);
     };
 
     const engineerTeam = engineer => {
-        return `
+        let eHtml = `
         <div class="card m-auto shadow-sm p-3 mb-2 bg-body rounded" style="width: 300px">
                     <div class="card-header p-3 mb-2 bg-secondary text-white">
-                        <p class="h3">${engineer.getName()}</p>
-                        <p class="h4">${engineer.getRole()}</p>
+                        <p class="h3">${engineer.engineersName}</p>
+                        <p class="h4">Engineer</p>
                     </div>
                     <div class="card-body bg-light">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <span class="font-weight-bold">ID: </span>
-                                ${engineer.getId()}
+                                ${engineer.engineersId}
                             </li>
                             <li class="list-group-item">
                                 <span class="font-weight-bold">Email: </span>
-                                <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a>
+                                <a href="mailto:${engineer.engineersEmail}">${engineer.engineersEmail}</a>
                             </li>
                             <li class="list-group-item">
                                 <span class="font-weight-bold">GitHub: </span>
-                                <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a><
+                                <a href="https://github.com/${engineer.engineersGithub}" target="_blank">${engineer.engineersGithub}</a>
                             </li>
                         </ul>
                     </div>
                 </div>`;
+                html.push(eHtml);
     };
 
     const internTeam = intern => {
-        return `
+        let iHtml = `
         <div class="card m-auto shadow-sm p-3 mb-2 bg-body rounded" style="width: 300px">
                     <div class="card-header p-3 mb-2 bg-secondary text-white">
-                        <p class="h3">${intern.getName()}</p>
-                        <p class="h4">${intern.getRole()}</p>
+                        <p class="h3">${intern.internsName}</p>
+                        <p class="h4">Intern</p>
                     </div>
                     <div class="card-body bg-light">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <span class="font-weight-bold">ID: </span>
-                                ${intern.getId()}
+                                ${intern.internsId}
                             </li>
                             <li class="list-group-item">
                                 <span class="font-weight-bold">Email: </span>
-                                <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a>
+                                <a href="mailto:${intern.internsEmail}">${intern.internsEmail}</a>
                             </li>
                             <li class="list-group-item">
                                 <span class="font-weight-bold">School: </span>
-                                ${intern.getSchool()}
+                                ${intern.internsSchool}
                             </li>
                         </ul>
                     </div>
                 </div>`;
-    };
+                html.push(iHtml);
+    }; 
 
-    const html = [];
+    for (let i = 0; i < team.length; i++) {
 
-    html.push(team.forEach(employee => {
-        if (employee.getRole === 'manager') {
-            return managerTeam(manager);
-        } else if (employee.getRole === 'engineer') {
-            return engineerTeam(engineer);
-        } else if (internTeam === 'intern') {
-            return internTeam(intern);
-        } else {
-            console.error('Error!');
+        if (team[i].getRole() === 'Manager') {
+            managerTeam(team[i]);
+            
         }
+        else if (team[i].getRole() === 'Engineer') {
+            engineerTeam(team[i]);
+        }
+        else (team[i].getRole() === 'Intern')
+            internTeam(team[i]);
+        
     }
-    ));
 
     return html.join('');
+
 };
 
 module.exports = team => {
